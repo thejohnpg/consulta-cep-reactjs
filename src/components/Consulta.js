@@ -1,104 +1,95 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
+import { MdDeleteForever } from "react-icons/md";
+import { IoMdSend } from "react-icons/io";
 
-import './Consulta.css'
+import api from "./../api/api";
+import { cepMask } from "./Mask";
 
-import api from './../api/api'
+import "./Consulta.css";
 
-export default function Consulta(){
+export default function Consulta() {
+  const [cep, setCep] = useState("");
+  const [dados, setDados] = useState("");
+  const [errorDataCep, setErrorDataCep] = useState("");
 
-    const [cep, setCep] = useState('');
-    const [dados, setDados] = useState('');
-    const [erroCep, setErroCep] = useState('');
+  async function handleSubmit(event) {
+    event.preventDefault();
+    
+    // validators client side
+    if (cep.length < 9) {
+        setDados("");
+        setErrorDataCep("Por favor, digite um CEP válido");
+        return
+    }    
+    
+    // request server side
+    const response = await api.get(`/${cep}/json`);
+    const data = response.data;
+    setDados(data);
 
-    async function handleSubmit(event){
-        event.preventDefault();
-        const response = await api.get(`/${cep}/json`)
-        const data = response.data 
-        setDados(data)
-        setErroCep("")
-        console.log(response.data)
-        // console.log(dados)
-
-        if (data.erro == true){
-            console.log("Não Há Nada Aqui !")
-            const msgErroCep = "Este CEP não está cadastrado em nossa Base de Dados"
-            setErroCep(msgErroCep)
-        }
-        else {
-
-        }
+    // errors server side
+    if (data.erro) {
+      setDados("");
+      setErrorDataCep("Este CEP não está cadastrado em nossa Base de Dados");
+      return
     }
 
-       
+    // ok !
+    setDados(data);
+    setErrorDataCep("");
+  }
+  function handleChange(event) {
+    setCep(cepMask(event.target.value));
+  }
 
-    return(
+  function clearContent(event) {
+    setCep("");
+    setDados("");
+    setErrorDataCep("");
+  }
 
-        <div className="divComponents">
-            <Grid item xs={12}>
-                <div className="divComponentsSearch">
-                    <form onSubmit={handleSubmit}>
-                    <TextField
-                        id="outlined-name"
-                        className="outlined-name"
-                        label="Consulte o CEP"
-                        margin="normal"
-                        variant="outlined"
-                        value={cep}
-                        onChange={event => setCep(event.target.value)}
-                   />
+  return (
+    <div className="container">
+      <div className="component-search">
+        <form onSubmit={handleSubmit}>
+          <input
+            id="input-cep"
+            label="Consulte o CEP"
+            value={cep}
+            onChange={handleChange}
+            maxLength="9"
+            autoFocus
+          ></input>
 
-                    <Button 
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        className="btnConsultar">
-                        Consultar
-                    </Button>
+          <button type="submit" className="btn-find">
+              <IoMdSend className="icon-send" />
+              <span>Consultar</span>
+          </button>
+          <button type="button" className="btn-clean" onClick={clearContent}>
+            <span>Limpar</span>
+            <MdDeleteForever className="icon-clean" />
+          </button>
+        </form>
+      </div>
 
-                    </form>
-                </div>
-            </Grid>
-
-                <Grid item xs={12}>
-                    <div className="divComponentsResponse">
-                    <SnackbarContent
-                            className="formDados"
-                            message= {dados.cep}
-                        />
-                        <SnackbarContent
-                            className="formDadosCep"
-                            message= {dados.logradouro}
-                        />
-                        <SnackbarContent
-                            className="formDadosCep"
-                            message= {dados.bairro}
-                        />
-                        <SnackbarContent
-                            className="formDadosCep"
-                            message= {dados.localidade}
-                        />
-                        <SnackbarContent
-                            className="formDadosCep"
-                            message= {dados.uf}
-                        />
-                        <h4>{erroCep}</h4>
-
-                    </div>
-
-                </Grid>
-
-               
-            </div>
-
-
+      <div className="component-response">
+        {dados && (
+            <>
+                <span className="data-list">{dados.cep}</span>
+                <span className="data-list">{dados.logradouro}</span>
+                <span className="data-list">{dados.bairro}</span>
+                <span className="data-list">{dados.localidade}</span>
+                <span className="data-list">{dados.uf}</span>
+            </>
+        )}
         
-            
-            
-    )
+        {errorDataCep && (
+            <span className="data-list error-data-cep">
+                {errorDataCep}
+            </span>
+        )}
+      </div>
+    </div>
+  );
 }
-

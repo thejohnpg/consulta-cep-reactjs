@@ -1,156 +1,160 @@
-.divComponentsSearch{
-    width: 100%;
-    padding: 10px;
-    margin-top: 5%;
-    padding: 0!important;
+.component-search {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    user-select: none;
 }
 
-.btnConsultar{
-    margin-top: 4vh!important;
-    margin-left: 1vh!important;
+#input-cep{
+    width: 50vw;
+    height: 4vh;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    box-sizing: border-box;
+    margin-right: 1%;
+    color: #421266;
 }
 
-.formDados{
-    width: 35%!important;
-    margin: 0 auto!important;
-    margin-top: 5%!important;
-    color:black!important;
-    background-color: rgb(226, 226, 226)!important;
+#input-cep:focus {
+    outline: none;
 }
 
-.formDadosCep{
-    width: 35%!important;
-    margin: 0 auto!important;
-    margin-top: 1%!important;
-    color:black!important;
-    background-color: rgb(226, 226, 226)!important;
-
-}
-.MuiPaper-elevation6{
-    box-shadow: 0px 0px 0px 0px!important
+#input-cep::selection {
+    background-color: #c179f9;
+    color: #fff;
 }
 
-.MuiFormLabel-root {
-    font-size: 50%!important;
-    padding: 5px!important;
+form{
+    display: flex;
+    justify-content: center;
 }
 
-@media screen and (max-width: 375px) {
-    .divComponentsResponse{
-      margin-top: 10%!important;
-  }
-  .btnConsultar{
-    margin-top: 4vh!important;
-    margin-right: 2vh!important;
+.btn-find {
+    height: 4vh;
+    border-radius: 5px;
+    background-color: #8425CC;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 1%;
+}
+
+.btn-find:hover {
+    background-color: #8C39CC;
+    color: #fff;
+}
+
+.btn-find:focus {
+    outline: none;
+}
+
+.btn-clean {
+    height: 4vh;
+    border-radius: 5px;
+    background-color: #1F0433;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 1%;
+}
+
+.btn-clean:hover {
+    background-color: #8425CC;
+}
+
+.btn-clean:focus {
+    outline: none;
+}
+
+.component-response {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.data-list{
+    width: 50%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    padding: 8px;
+    border-bottom: 1px solid rgba(132, 37, 204, 0.1);
+}
+
+.data-list::selection {
+   background-color: #c179f9;
+}
+
+.data-list.error-data-cep {
+    color: #c179f9;
+    position: absolute;
+    bottom: 0;
+    padding: 16px;
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+      margin-bottom: -10%;
     }
-    .MuiFormLabel-root {
-        font-size: 9px!important;
-        padding: 5px!important;
+  
+    to {
+      margin-top: 0%;
+      width: 99vw;
     }
 }
 
-@media screen and (max-width: 250px) {
-    .divComponents{
-        margin: 0 auto;
-    }
-    .outlined-name{
-        width: 80%;
-    }
-    .divComponentsResponse{
-        margin-top: 15%!important;
-    }
-    .MuiFormLabel-root {
-        font-size: 8px!important;
-    }
-
+.icon-send {
+    font-size: 16px;
+    margin-right: 2%;
+    vertical-align: text-bottom;
 }
 
-@media screen and (max-width: 200px) {
-    .divComponentsResponse{
-        margin-top: 20%!important;
+.icon-clean{
+    font-size: 16px;
+    margin-left: 2%;
+    vertical-align: text-bottom;
+}
+
+@media only screen and (min-width: 1200px) {
+    .btn-find{
+        width: 12vw;
     }
-    .btnConsultar{
-        margin-top: 3vh!important;
-        }
-    .MuiFormLabel-root {
-        font-size: 10px!important;
+    .btn-clean{
+        width: 8vw;
     }
 }
 
-@media screen and (max-width: 170px) {
-    .divComponentsResponse{
-        margin-top: 20%!important;
+@media only screen and (max-width: 250px) {
+    form {
+        flex-direction: column;
     }
-    .outlined-name{
-        width: 75%;
+    #input-cep {
+        width: 100%;
+        margin-bottom: 2%;
+        font-size: 0.6em;
     }
-    .MuiFormLabel-root {
-        font-size: 8px!important;
+    .btn-find{
+        width: 100%;
+        font-size: 0.6em;
+        margin-bottom: 2%;
+    }
+    .btn-clean{
+        width: 100%;
+        font-size: 0.6em;
+        height: 3vh;
+    }
+    .data-list {
+        height: max-content;
+        margin-bottom: 2%;
+    }
+    span {
+        font-size: 0.6em;
     }
 }
-
-@media screen and (max-width: 140px) {
-
-    .btnConsultar{
-        width: 80%!important;
-        font-size: 50%!important;
-    }
-    .outlined-name{
-        width: 100%!important;
-        margin: 0 auto;
-    }
-
-    .btnConsultar{
-        width: 60%!important;
-        font-size: 50%!important;
-    }
-    .divComponentsSearch{
-        margin: 0 auto;
-        padding: 0!important;
-    }
-
-    *{
-        margin: auto;
-    }
-    .divComponentsResponse{
-        width: 100%!important;
-    }
-    .divComponents{
-        width: 100%!important;
-        margin: 0 auto!important;
-    }
-
-    @media screen and (max-width: 110px) {
-        .divComponentsResponse{
-          margin-top: 10%!important;
-      }
-
-        .MuiFormLabel-root {
-            font-size: 7px!important;
-            padding: 5px!important;  
-            
-        }
-        .formDadosCep, .formDados{
-            font-size: 8px!important;
-        }
-    }
-    @media screen and (max-width: 70px) {
-        .btnConsultar{
-            font-size: 8px!important;
-            width: 25%!important;
-            margin-top: 5%!important;
-
-        }
-        
-        .divComponentsSearch
-        {
-            margin: 0 auto!important;
-            padding: 0px!important;
-        }
-
-
-    }
-    
-      
-}
-
