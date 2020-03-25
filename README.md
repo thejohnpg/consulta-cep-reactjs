@@ -13,7 +13,7 @@ Download the project, enter in the directory from project.
 | Online | Demos |
 | ------ | ------ |
 | Demo HerokuApp | [https://consulta-cep-reactjs.herokuapp.com]  ✅|
-| Demo Netlify | https://consultacep-br.netlify.com/]  ✅|
+| Demo Netlify | [https://consultacep-br.netlify.com]  ✅|
 
 The project uses React and has no need for a backend =)
 
