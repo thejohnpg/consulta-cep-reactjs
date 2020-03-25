@@ -91,10 +91,12 @@ form{
 }
 
 .data-list.error-data-cep {
+    width: 100%;
     color: #c179f9;
     position: absolute;
     bottom: 0;
-    padding: 16px;
+    padding: 16px 8px;
+    box-sizing: border-box;
     animation-duration: 1s;
     animation-name: slidein;
 }

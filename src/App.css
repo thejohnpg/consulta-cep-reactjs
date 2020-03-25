@@ -6,3 +6,27 @@
   flex-direction: column;
   align-self: center;
 }
+
+.header{
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 5vh;
+  background-color: #210933;
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.4);
+  justify-content: flex-end;
+}
+.header-icon{
+  display: flex;
+  align-self: center;
+  padding: 24px;
+  color: rgb(212, 212, 212);
+  cursor: pointer;
+  font-size: 24px;
+  user-select: none;
+}
+
+.header-icon:hover{
+  color: #fff;
+}
