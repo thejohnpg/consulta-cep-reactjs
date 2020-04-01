@@ -7,7 +7,6 @@
 
 #input-cep{
     width: 50vw;
-    height: 4vh;
     border-radius: 5px;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.5);
     padding: 8px;
@@ -31,7 +30,6 @@ form{
 }
 
 .btn-find {
-    height: 4vh;
     border-radius: 5px;
     background-color: #8425CC;
     border: none;
@@ -50,7 +48,6 @@ form{
 }
 
 .btn-clean {
-    height: 4vh;
     border-radius: 5px;
     background-color: #1F0433;
     border: none;
@@ -140,7 +137,6 @@ form{
     #input-cep {
         width: 100%;
         margin-bottom: 2%;
-        font-size: 0.6em;
     }
     .btn-find{
         width: 100%;
@@ -149,14 +145,12 @@ form{
     }
     .btn-clean{
         width: 100%;
-        font-size: 0.6em;
-        height: 3vh;
     }
     .data-list {
         height: max-content;
         margin-bottom: 2%;
     }
     span {
-        font-size: 0.6em;
+        font-size: 1rem;
     }
 }

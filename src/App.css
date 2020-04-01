@@ -7,6 +7,15 @@
   align-self: center;
 }
 
+h1 {
+  color: #8C39CC;
+  position: absolute;
+  top: 5%;
+  align-self: center;
+  font-size: 1em;
+  text-align: center;
+}
+
 .header{
   display: flex;
   width: 100%;
